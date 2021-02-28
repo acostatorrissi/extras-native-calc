@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text} from 'react-native';
+import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 const AppButton = ({ onPress, title }) =>  (
     <TouchableOpacity onPress={onPress} style={StyleSheet.appButtonContainer}>
@@ -11,10 +11,6 @@ const styles = StyleSheet.create({
 
     appButtonContainer: {
       elevation: 8,
-      backgroundColor: "white",
-      borderRadius: 10,
-      paddingVertical: 10,
-      paddingHorizontal: 12
     },
     appButtonText: {
       fontSize: 50,
@@ -26,4 +22,4 @@ const styles = StyleSheet.create({
     }
   });
 
-  export default AppButton;
+export default AppButton;

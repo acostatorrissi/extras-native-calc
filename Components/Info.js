@@ -1,22 +1,45 @@
 import React from 'react';
-import { View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import { Link } from 'react-router-native';
 
 const Info = () => {
 
-    return (
-        <View style={{ padding: 30 }}>
+    const styles = StyleSheet.create ({
+        text: {
+            fontFamily: 'sans-serif-condensed',
+            fontSize: 15,
+            padding: 30,
+            textAlign: 'center',
+            color: 'white'
+        },
+        listItem: {
+            fontFamily: 'sans-serif-condensed',
+            fontSize: 15,
+            textAlign: 'center',
+            paddingLeft:20,
+            paddingRight: 20,
+            paddingTop: 5,
+            color: 'white'
+        }
+    });
 
-            <Text style={{fontFamily: 'sans-serif-condensed', fontSize:15}}>
-                Esta aplicación toma el sueldo bruto y lo divide por 200 horas.
-                Luego calcula el valor de la hora al 50% y al 100%.
-                Finalmente multiplica las horas ingresadas por los valores y muestra el total.
+    return (
+        <View>
+
+            <Text style={styles.listItem}>
+                El sueldo bruto es dividido por 200 horas.
+            </Text>
+            <Text style={styles.listItem}>
+                Se calcula el valor de la hora al 50% y al 100%.
+            </Text>
+            <Text style={styles.listItem}>
+                Se multiplican los valores calculados por las cantidades ingresadas.
             </Text>
 
-            <Link style={{ padding: 10, flexDirection: 'column', marginTop:50, marginBottom:0 }} component={TouchableOpacity} to={'/'}>
-                    <Text  style={{ textAlign:'center', fontFamily: 'sans-serif-condensed', fontSize:15 }} >
-                        Volver
-                    </Text>
+            <Link component={TouchableOpacity} to={'/'}>
+                <Text  style={styles.text} >
+                    Volver
+                </Text>
             </Link>
             
         </View>

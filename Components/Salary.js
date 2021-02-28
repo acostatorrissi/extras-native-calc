@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { View, Text, TextInput, Alert, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, TextInput, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { Link } from 'react-router-native';
 import AppButton from './AppButton';
 
@@ -13,10 +13,10 @@ class Salary extends Component {
             fifty: 0,
             hundred: 0
         }
-        this.calcular = this.calcular.bind(this);
+        this.calculate = this.calculate.bind(this);
     }
 
-    calcular(){
+    calculate(){
         
         const hour = this.state.salary / 200;
     
@@ -49,52 +49,58 @@ class Salary extends Component {
                 borderRadius: 5,
             },
             inputContainer: {
-            marginBottom: 20,
-            shadowColor: '#000',
-            shadowOffset: {
-                width: 0,
-                height: 2,
-            },
-            shadowOpacity: 0.23,
-            shadowRadius: 2.62,
-            elevation: 4,
+                marginBottom: 20,
+                shadowColor: '#000',
+                shadowOffset: {
+                    width: 0,
+                    height: 2,
+                },
+                shadowOpacity: 0.23,
+                shadowRadius: 2.62,
+                elevation: 4,
             },
             text:{
-            paddingBottom: 3,
-            fontFamily: 'sans-serif-condensed',
-            fontSize: 15
+                paddingBottom: 3,
+                fontFamily: 'sans-serif-condensed',
+                fontSize: 15,
+                color: 'white'
             },
+            about:{
+                fontFamily: 'sans-serif-condensed',
+                fontSize: 15,
+                textAlign: 'center',
+                padding: 10,
+                marginTop: 50,
+                color: 'white'
+            }
         });
 
         return (
 
             <View style={styles.inputContainer}> 
-                <Text style={{ textAlign:'center', paddingBottom: 30, fontSize: 35, color: '#007cba',  }}>
-                    
-                </Text>
+               
                 <Text style={styles.text}>
                     Sueldo bruto:
                 </Text>
-                <TextInput style={styles.input} onChangeText = {(text) => this.setState({salary: text})} keyboardType='numeric' name="salary" />
+                <TextInput style={styles.input} onChangeText = {(text) => this.setState({salary: text})} keyboardType='numeric'/>
                 
                 <Text style={styles.text}>
                     Cantidad de horas al 50%:
                 </Text>
-                <TextInput style={styles.input} onChangeText = {(text) => this.setState({fifty: text})} keyboardType='numeric' name="fifty"/>
+                <TextInput style={styles.input} onChangeText = {(text) => this.setState({fifty: text})} keyboardType='numeric'/>
 
                 <Text style={styles.text}>
                    Cantidad de horas al 100%:
                 </Text>
-                <TextInput style={styles.input} onChangeText = {(text) => this.setState({hundred: text})} keyboardType='numeric' name="hundred" />
+                <TextInput style={styles.input} onChangeText = {(text) => this.setState({hundred: text})} keyboardType='numeric'/>
 
-                <AppButton title={"Calcular"} onPress={this.calcular}></AppButton>
+                <AppButton title={"Calcular"} onPress={this.calculate}></AppButton>
                               
-                <Link style={{ padding: 0, flexDirection: 'column', marginTop:50, marginBottom:0 }} component={TouchableOpacity} to={'/info'}>
-                    <Text  style={{ textAlign:'center', fontFamily: 'sans-serif-condensed', padding:10 }} >
-                        Acerca de la aplicación
+                <Link component={TouchableOpacity} to={'/info'}>
+                    <Text  style={styles.about}>
+                        ¿Cómo funciona?
                     </Text>
-                </Link>
-             
+                </Link>             
             </View>
         );
     }
