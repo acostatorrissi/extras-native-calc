@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "extrasNative",
-    "slug": "extrasNative",
-    "version": "1.0.0",
+    "name": "Mis Extras",
+    "slug": "Mis_Extras",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "ios": {
