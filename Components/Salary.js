@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { View, Text, TextInput, Button, Alert, StyleSheet} from 'react-native';
-import { NativeRouter, Route, Link } from 'react-router-native';
+import { View, Text, TextInput, Alert, StyleSheet, TouchableOpacity} from 'react-native';
+import { Link } from 'react-router-native';
 import AppButton from './AppButton';
 
 class Salary extends Component {
@@ -28,7 +28,7 @@ class Salary extends Component {
 
         const result = (hour50 * fifty) + (hour100 * hundred);
 
-        if (result){
+        if (result || result===0){
             Alert.alert("Tus extras son $" + result);
         }else{
             Alert.alert("Por favor revise que los valores estén ingresados correctamente");
@@ -46,37 +46,36 @@ class Salary extends Component {
                 marginBottom: 5,
                 borderColor: '#A96151',
                 borderWidth: 2,
-                borderRadius: 5
-
-              },
-              inputContainer: {
-                marginBottom: 20,
-                shadowColor: '#000',
-                shadowOffset: {
-                  width: 0,
-                  height: 2,
-                },
-                shadowOpacity: 0.23,
-                shadowRadius: 2.62,
-                elevation: 4,
-              },
-              text:{
-                paddingBottom: 3,
-                fontFamily: 'sans-serif-condensed'
-              }
+                borderRadius: 5,
+            },
+            inputContainer: {
+            marginBottom: 20,
+            shadowColor: '#000',
+            shadowOffset: {
+                width: 0,
+                height: 2,
+            },
+            shadowOpacity: 0.23,
+            shadowRadius: 2.62,
+            elevation: 4,
+            },
+            text:{
+            paddingBottom: 3,
+            fontFamily: 'sans-serif-condensed',
+            fontSize: 15
+            },
         });
 
         return (
 
-            <View style={styles.inputContainer}
-            > 
+            <View style={styles.inputContainer}> 
                 <Text style={{ textAlign:'center', paddingBottom: 30, fontSize: 35, color: '#007cba',  }}>
                     
                 </Text>
                 <Text style={styles.text}>
                     Sueldo bruto:
                 </Text>
-                <TextInput style={styles.input} onChangeText = {(text) => this.setState({salary: text})} keyboardType='numeric' name="salary" /*style={{borderColor: 'white', borderWidth: 2, height: 40, backgroundColor: 'gray'}}*/ />
+                <TextInput style={styles.input} onChangeText = {(text) => this.setState({salary: text})} keyboardType='numeric' name="salary" />
                 
                 <Text style={styles.text}>
                     Cantidad de horas al 50%:
@@ -87,13 +86,15 @@ class Salary extends Component {
                    Cantidad de horas al 100%:
                 </Text>
                 <TextInput style={styles.input} onChangeText = {(text) => this.setState({hundred: text})} keyboardType='numeric' name="hundred" />
+
                 <AppButton title={"Calcular"} onPress={this.calcular}></AppButton>
-                <Link style={{ padding: 50, flexDirection: 'column', marginTop:50, marginBottom:0 }} to="/info">
-                    <Text style={{ textAlign:'center', fontFamily: 'sans-serif-condensed' }}>
+                              
+                <Link style={{ padding: 0, flexDirection: 'column', marginTop:50, marginBottom:0 }} component={TouchableOpacity} to={'/info'}>
+                    <Text  style={{ textAlign:'center', fontFamily: 'sans-serif-condensed', padding:10 }} >
                         Acerca de la aplicación
                     </Text>
                 </Link>
-                
+             
             </View>
         );
     }
